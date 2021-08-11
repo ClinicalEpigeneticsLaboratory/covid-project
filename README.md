@@ -10,6 +10,10 @@ Team: The Independent Clinical Epigenetics Laboratory, Poland
 To start work with code make sure that R>=4.0.3 (https://cran.r-project.org/), 
 Python >=3.8, <3.10 (https://www.python.org/), pip (https://packaging.python.org/tutorials/installing-packages/) and poetry (https://python-poetry.org/) are installed.
 
+To download repository:
+	
+		git clone https://github.com/EpiGenMed/covid-project.git
+
 ### R scripts
         
 Repository contains 3 files:

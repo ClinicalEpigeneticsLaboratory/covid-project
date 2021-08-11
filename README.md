@@ -96,8 +96,9 @@ Implementation of statistical analysis process to identfiy DMPs.
     epic = pd.read_csv("<path_to_EPIC_manifest>", index_col=0, low_memory=False)
     # Load EPIC manifest 
     
-    stats = StatsAnalysis(cov_mynorm, hb_mynorm, epic) # Initialize object
-    stats.extract_probes(regions_ra=<region>) # Optional extract only CpGs in specific regions for example: TSS1500|TSS200 -> will extract probes in TSS
+    stats = StatsAnalysis(target_mynorm, control_mynorm, epic) # Initialize object
+    # stats.extract_probes(regions_ra=<region>) # Optional extract only CpGs in specific regions for example: regions_ra="TSS1500|TSS200" will extract probes in 
+    # TSS1500 or TSS200
     results = stats.run()
     
     results.to_csv(<path_to_save_file>)

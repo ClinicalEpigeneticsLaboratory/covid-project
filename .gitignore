@@ -5,6 +5,10 @@ __pycache__/
 
 # R
 *.Rproj
+.RData
+.Rhistory
+.RDataTmp
+
 
 # Data
 Plots/
@@ -141,3 +145,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+.Rproj.user

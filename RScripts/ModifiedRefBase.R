@@ -1,9 +1,3 @@
-#Download the library
-if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
-BiocManager::install("EpiDISH")
-
-# Load
 library("EpiDISH")
 
 # Function implementation
@@ -28,10 +22,3 @@ modified_refBase <- function(beta, method="RPC"){
   return(list(CorrectedBeta = tmp.m, CellFractionBeforeCorrection = cellFrac,
               CellFractionAfterCorrection = cellFrac2))
 }
-
-# Load data
-mynorm <- data.table::fread("../data/interim/ALL/myNorm.csv", data.table = F)
-mynorm <- data.frame(mynorm, row.names = 1)
-
-# Run
-cfc <- modified_refBase(mynorm)

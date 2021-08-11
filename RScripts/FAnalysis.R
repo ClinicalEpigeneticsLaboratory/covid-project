@@ -15,7 +15,7 @@ df <- df[, c("CpG", "p.value")]
 df_pvls <- df$p.value
 names(df_pvls) <- df$CpG
 
-dbs = c("Reactome")
+dbs = c("Reactome") # May be extend using KEGG or GO
 results = list()
 
 for (db in dbs){

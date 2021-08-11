@@ -1,6 +1,6 @@
 # COVID-19 Project
 
-This repository contains R and Python code used in methylome analysis of patients infected by SARS-COV-19 virus.
+This repository contains R and Python code used in methylome analysis of SARS-CoV-2 infected patients.
 
 Manuscript: "". 
 
@@ -22,11 +22,11 @@ Repository contains 3 files:
 
 * **RawDataProcessing.R** -> containing code used to process *IDAT files using ChAMP (https://www.bioconductor.org/packages/release/bioc/html/ChAMP.html) package.
 
-* **ModifiedRefBase.R** -> containing  **modified_refBase** function what is a copy of refBase (https://rdrr.io/bioc/ChAMP/man/champ.refbase.html) from ChAMP package. However part of code used to estimate white-blood cell fractions was re-implemented using RPC method from EpiDISH (https://www.bioconductor.org/packages/release/bioc/html/EpiDISH.html) package.
+* **ModifiedRefBase.R** -> containing  **modified_refBase** function what is a copy of refBase (https://rdrr.io/bioc/ChAMP/man/champ.refbase.html) from ChAMP package. Note, that part of code used to estimate white-blood cell fractions was re-implemented using RPC method from EpiDISH (https://www.bioconductor.org/packages/release/bioc/html/EpiDISH.html) package.
 
 * **install_packages.R** -> file containing requirements.
         
-Before run, to install required packages type:
+Before run install required packages type:
         
         Rscript install_packages.R
         
@@ -45,7 +45,7 @@ Input *.csv* file must contain two columns **CpG** with CpG ID and **p-value** w
 
 ##### **ModifiedRefBase.R**
 
-Input *.csv* file must be a 2-dimensional frame containing beta-values, **CpGs** as rows and **samples** as columns. 
+Input *.csv* file must be a 2-dimensional frame containing beta-values, with **CpGs** as rows and **samples** as columns. 
 
 Function modified_refBase return list of three obejcts: 
 
@@ -61,7 +61,7 @@ Function modified_refBase return list of three obejcts:
 
 ### Python notebooks
 
-This part of repository contains notebooks, and source code used in main part of analysis.
+This part of repository contains notebooks and a source code used in the main part of the analysis.
 
 To make code transferable we used *Poetry* (https://python-poetry.org/) dependency menager. To create virtual environment and install all required dependencies type:
 
@@ -73,7 +73,7 @@ Then to run notebook use:
         poetry run jupyter-lab
         
 
-Additionaly *src/* directory contains two files:
+Additionally *src/* directory contains two files:
 
     * stats.py -> class implementing methods to identify DMPs.
    
@@ -105,7 +105,7 @@ Implementation of statistical analysis process to identfiy DMPs.
 
 ##### **enrichment_analysis.py**
 
-Enrichment analysis process for set of CpGs identifed using StatsAnalysis implementation.
+Enrichment analysis for set of CpGs identifed using StatsAnalysis implementation.
 
     import pandas as pd
     from src.enrichemnt_analysis import EnrichmentAnalysis

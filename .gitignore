@@ -13,6 +13,11 @@ __pycache__/
 # Additional elements
 Plots/
 Art/
+.idea/
+*.csv
+*.xls
+*.xlsx
+*.ods
 
 # Additional code
 utils.py

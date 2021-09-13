@@ -10,17 +10,9 @@ __pycache__/
 .RDataTmp
 
 
-# Data
+# Additional elements
 Plots/
-Annots/
 Art/
-data/
-Expression/
-FA/
-Files/
-*.csv
-*.xls
-*.xlsx
 
 # Additional code
 utils.py

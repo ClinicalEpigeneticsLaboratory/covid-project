@@ -1,8 +1,8 @@
 # COVID-19 Project
 
-This repository contains R and Python code used in methylome analysis of SARS-CoV-2 infected patients.
+This repository contains source code used in analysis of patients infected by SARS-CoV-2.
 
-Manuscript: "". 
+Manuscript: "Coherent response of blood methylome to SARS-CoV-2 infection between three independent populations of patients". 
 
 Team: The Independent Clinical Epigenetics Laboratory, Poland
 
@@ -123,6 +123,3 @@ Enrichment analysis for set of CpGs identifed using StatsAnalysis implementation
     ea.calculate_frequency()
     ea.estimate_fc()
     ea.vis() # or ea.vis(<path_to_output_dir>) to export results
-
-
-    

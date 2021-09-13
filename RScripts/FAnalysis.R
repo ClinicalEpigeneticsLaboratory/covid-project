@@ -4,8 +4,6 @@ library(IlluminaHumanMethylationEPICanno.ilm10b4.hg19)
 library(methylGSA)
 library(glue)
 
-
-# Function implementation
 enrich <- function(result_dir, input_data, min = 25, max = 250, array_type = "EPIC", padj_threshold = 0.05, db="Reactome"){
 
 df <- read.csv(input_data)
@@ -22,4 +20,4 @@ write.csv(res, path)
 return(res)
 }
 
-enrich(result_dir = ".", input_data = "../Notebooks/output/PLCoV_vs_HB_TSS.csv")
+enrich(result_dir = ".", input_data = "../Notebooks/statistics/output/PLCoV_vs_HB_TSS.csv")

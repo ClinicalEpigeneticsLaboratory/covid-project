@@ -2,9 +2,9 @@
 library("ChAMP")
 
 # Set working directory
-setwd("../data/raw/")
+# setwd("")
 
-myLoad <- champ.load(directory = "CONCATED_Spain_HB/",
+myLoad <- champ.load(directory = ".",
                      method="champ",
                      methValue="B",
                      autoimpute=TRUE,
@@ -29,16 +29,16 @@ champ.QC(beta = myLoad$beta,
          dendrogram=TRUE,
          PDFplot=TRUE,
          Rplot=TRUE,
-         resultsDir="../interim/Spain/")
+         resultsDir="QC/")
 
 myNorm <- champ.norm(beta=myLoad$beta,
                      rgSet=myLoad$rgSet,
                      mset=myLoad$mset,
-                     resultsDir="../interim/Spain/",
+                     resultsDir="Norm/",
                      method="BMIQ",
                      plotBMIQ=TRUE,
                      arraytype="EPIC",
-                     cores=2)
+                     cores=4)
 
 champ.SVD(beta = myNorm,
           rgSet=NULL,
@@ -46,7 +46,9 @@ champ.SVD(beta = myNorm,
           RGEffect=FALSE,
           PDFplot=TRUE,
           Rplot=TRUE,
-          resultsDir="../SVD/")
+          resultsDir="SVD/")
+
+norm <- champ.runCombat(beta = myNorm, pd=myLoad$pd)
 
 # save as csv file
-write.table(myNorm, file = "../interim/Spain/Spain_mynorm.csv", sep=",")
+write.table(myNorm, file = "", sep=",")

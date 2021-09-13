@@ -37,6 +37,7 @@ Before run install required packages type:
 
 Input *.csv* file must contain two columns **CpG** with CpG ID and **p-value** with corresponding value. Input file is an output from StatsAnalysis class described below.
 
+	setwd(<path_to_dir>)
         source(<path_to_file.R>)
         enrich(result_dir=<path_to_output_directory>,
                input_data=<path_to_input_csv_file>,
@@ -53,7 +54,8 @@ Function modified_refBase return list of three obejcts:
 2) Corrected mynorm
 3) Estimated white blood cell fractions for each sample after correction for WBC fractions
 
-        source(<path_to_file.R>)
+        setwd(<path_to_dir>)
+	source(<path_to_file.R>)
         mynorm <- data.table::fread(<path_to_mynorm_file>, data.table = F)
         mynorm <- data.frame(mynorm, row.names = 1)
 

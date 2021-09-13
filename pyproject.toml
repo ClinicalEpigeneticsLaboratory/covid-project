@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "covid-project"
+name = "Covid-19-project"
 version = "0.1.0"
-description = ""
+description = "Covid-19 data analysis."
 authors = ["Jan Bińkowski"]
 
 [tool.poetry.dependencies]
@@ -19,6 +19,7 @@ venn = "^0.1.3"
 tqdm = "^4.62.0"
 statsmodels = "^0.12.2"
 numba = "^0.53.1"
+modin = "^0.10.2"
 
 [tool.poetry.dev-dependencies]
 nb-black = "^1.0.7"

@@ -20,7 +20,7 @@ Repository contains 3 files:
         
 * **FAnalysis.R** -> containing **enrich** function implementing gene-set-enrichment-analysis using methylGSA (https://bioconductor.org/packages/release/bioc/html/methylGSA.html) package.
 
-* **RawDataProcessing.R** -> containing code used to process *IDAT files using ChAMP (https://www.bioconductor.org/packages/release/bioc/html/ChAMP.html) package.
+* **RawDataProcessing.R** -> containing code used to process **IDAT** files using ChAMP (https://www.bioconductor.org/packages/release/bioc/html/ChAMP.html) package.
 
 * **ModifiedRefBase.R** -> containing  **modified_refBase** function what is a copy of refBase (https://rdrr.io/bioc/ChAMP/man/champ.refbase.html) from ChAMP package. Note, that part of code used to estimate white-blood cell fractions was re-implemented using RPC method from EpiDISH (https://www.bioconductor.org/packages/release/bioc/html/EpiDISH.html) package.
 

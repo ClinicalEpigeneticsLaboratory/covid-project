@@ -19,5 +19,3 @@ write.csv(res, path)
 
 return(res)
 }
-
-enrich(result_dir = ".", input_data = "../Notebooks/statistics/output/PLCoV_vs_HB_TSS.csv")

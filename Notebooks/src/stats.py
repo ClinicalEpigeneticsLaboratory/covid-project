@@ -4,11 +4,11 @@ from collections import deque
 
 import numpy as np
 import pandas as pd
-import scipy.stats as s
 from numba import jit
+from tqdm import tqdm
+import scipy.stats as s
 from pandas import DataFrame, Series
 from statsmodels.stats.multitest import multipletests
-from tqdm import tqdm
 
 
 class StatsAnalysis:

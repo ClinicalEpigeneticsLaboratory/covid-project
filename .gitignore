@@ -147,7 +147,14 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .Rproj.user
-/data
-/Expression
-/FA
-/Tracks
+
+# Dir
+
+Art/
+data/
+Expression/
+FA/
+Files/
+Plots/
+Tracks/
+

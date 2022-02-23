@@ -1,6 +1,6 @@
+import os
 import pickle
 import pathlib
-from itertools import chain
 import typing as t
 
 import numpy as np
@@ -14,13 +14,14 @@ path_type = t.Union[str, pathlib.Path]
 
 
 class EnrichmentAnalysis:
-    def __init__(self, report: list, mynorm: pd.DataFrame, manifest_path: path_type,
-                 target=["UCSC_RefGene_Group", "Relation_to_UCSC_CpG_Island"]):
+    def __init__(self, report: list, mynorm: pd.DataFrame, manifest_path: path_type = os.environ.get("POETRY_EPIC"),
+                 target: list=["UCSC_RefGene_Group", "Relation_to_UCSC_CpG_Island"]):
+        
         self.target = target
         self.report = report
-        self.mynorm = set(mynorm.index)
+        self.mynorm = mynorm.index
         
-        self.manifest = pd.read_csv(manifest_path, low_memory=False, index_col=0)
+        self.manifest = pd.read_parquet(manifest_path)
         self.manifest = self.manifest[(self.manifest["CHR"] != "X") & (self.manifest["CHR"] != "Y")][self.target]
         self.manifest["Relation_to_UCSC_CpG_Island"] = self.manifest["Relation_to_UCSC_CpG_Island"].fillna("OpenSea")
         self.manifest["UCSC_RefGene_Group"] = self.manifest["UCSC_RefGene_Group"].fillna("Unknown")
@@ -29,26 +30,13 @@ class EnrichmentAnalysis:
         self.results = {}
         self.bg = {}
 
-    @staticmethod
-    def extract(data: str) -> t.List[str]:
-
-        if ";" in data:
-            data = data.split(";")
-            data = list(set(data))
-            return data
-
-        else:
-            return [data]
-
     def prepare_bg(self) -> None:
         bg_probes = self.mynorm
 
         for target in tqdm(self.target):
-            bg = self.manifest.loc[bg_probes, target].map(self.extract).tolist()
-            bg = pd.Series((chain(*bg)))
+            bg = self.manifest.loc[bg_probes, target].str.split(";").explode()
             bg = bg.value_counts(normalize=True)
             bg.name = f"BG_{target}"
-
             self.bg.update({target: bg})
 
     def calculate_frequency(self) -> None:
@@ -56,8 +44,7 @@ class EnrichmentAnalysis:
         probes = self.report
 
         for target in tqdm(self.target):
-            input_ = self.manifest.loc[probes, target].map(self.extract).tolist()
-            input_ = pd.Series((chain(*input_)))
+            input_ = self.manifest.loc[probes, target].str.split(";").explode()
             input_ = input_.value_counts(normalize=True)
             input_.name = f"Input_{target}"
 

@@ -52,3 +52,6 @@ norm <- champ.runCombat(beta = myNorm, pd=myLoad$pd)
 
 # save as csv file
 write.table(myNorm, file = "", sep=",")
+
+
+library("ChAMP")

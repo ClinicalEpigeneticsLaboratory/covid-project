@@ -1,5 +1,5 @@
 library("EpiDISH")
-
+library("arrow")
 # Function implementation
 modified_refBase <- function(beta, method="RPC"){
   
@@ -22,3 +22,25 @@ modified_refBase <- function(beta, method="RPC"){
   return(list(CorrectedBeta = tmp.m, CellFractionBeforeCorrection = cellFrac,
               CellFractionAfterCorrection = cellFrac2))
 }
+
+mynorm <- data.table::fread("/home/janbinkowski/Desktop/Projects/covid-project/data/interim/NEW_ALL/myNorm.csv", data.table=F)
+rownames(mynorm) <- mynorm[, 1]
+mynorm <- mynorm[, -1]
+
+# Split into chunks
+c1 <- modified_refBase(mynorm[, 1:400])
+c2 <- modified_refBase(mynorm[, 401:800])
+c3 <- modified_refBase(mynorm[, 801:length(colnames(mynorm))])
+
+corrected_mynorm <- cbind(c1$CorrectedBeta, c2$CorrectedBeta, c3$CorrectedBeta)
+predicted_cf <- rbind(c1$CellFractionBeforeCorrection, c2$CellFractionBeforeCorrection, c3$CellFractionBeforeCorrection)
+cf_after_correction <- rbind(c1$CellFractionAfterCorrection, c2$CellFractionAfterCorrection, c3$CellFractionAfterCorrection)
+
+dim(corrected_mynorm) == dim(mynorm)
+all(row.names(corrected_mynorm) == row.names(mynorm))
+all(colnames(corrected_mynorm) == colnames(mynorm))
+
+write.csv(corrected_mynorm, "../data/processed/CorrectedMyNorms/mynorm.csv")
+write.csv(cf_after_correction, "../data/processed/CF/corrected_CF.csv")
+write.csv(predicted_cf, "../data/processed/CF/raw_CF.csv")
+

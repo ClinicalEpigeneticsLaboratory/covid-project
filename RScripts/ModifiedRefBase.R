@@ -1,5 +1,9 @@
+# Function to perform cell-fraction correction based on ChAMP implentation and RPC method from
+# EpiDISH package.
+
 library("EpiDISH")
 library("arrow")
+
 # Function implementation
 modified_refBase <- function(beta, method="RPC"){
   
@@ -27,7 +31,7 @@ mynorm <- data.table::fread("/home/janbinkowski/Desktop/Projects/covid-project/d
 rownames(mynorm) <- mynorm[, 1]
 mynorm <- mynorm[, -1]
 
-# Split into chunks
+# Split data into chunks
 c1 <- modified_refBase(mynorm[, 1:400])
 c2 <- modified_refBase(mynorm[, 401:800])
 c3 <- modified_refBase(mynorm[, 801:length(colnames(mynorm))])
@@ -43,4 +47,3 @@ all(colnames(corrected_mynorm) == colnames(mynorm))
 write.csv(corrected_mynorm, "../data/processed/CorrectedMyNorms/mynorm.csv")
 write.csv(cf_after_correction, "../data/processed/CF/corrected_CF.csv")
 write.csv(predicted_cf, "../data/processed/CF/raw_CF.csv")
-

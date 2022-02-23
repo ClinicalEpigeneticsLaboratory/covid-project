@@ -13,6 +13,9 @@ __pycache__/
 # Additional elements
 Plots/
 Art/
+GEO/
+Homer/
+app/
 .idea/
 *.csv
 *.xls

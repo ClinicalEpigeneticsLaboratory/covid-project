@@ -60,10 +60,14 @@ Then to run notebook use:
         poetry run jupyter-lab
         
 
-Additionally *src/* directory contains files:
+*src/* directory contains files:
 
-    * stats.py -> class implementing methods to identify DMPs
    
     * figures.py -> with function to generate plots (col_pallete.py contains colors used per sample group)
     
     * utils.py -> additional functions.py
+    
+
+*statistics/src* directory contains file:
+
+    * stats.py -> class implementing methods to identify DMPs
